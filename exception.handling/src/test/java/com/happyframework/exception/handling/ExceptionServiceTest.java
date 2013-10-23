@@ -9,7 +9,10 @@ public class ExceptionServiceTest {
 
 	@Test
 	public void thisHandle() {
-		ApplicationContextUtil.getContext().getBean(TestController.class);
+		ApplicationContextUtil
+		.getContext()
+		.getBean(TestController.class)
+		.test();
 	}
 
 }

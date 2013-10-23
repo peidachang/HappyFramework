@@ -5,6 +5,7 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans 
                            http://www.springframework.org/schema/beans/spring-beans.xsd
                            http://www.springframework.org/schema/context 
@@ -12,11 +13,26 @@
                            http://www.springframework.org/schema/mvc
                            http://www.springframework.org/schema/mvc/spring-mvc.xsd
                            http://www.springframework.org/schema/aop
-						   http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+						   http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+						   http://www.springframework.org/schema/util
+                     	   http://www.springframework.org/schema/util/spring-util-3.0.xsd">
 
     <context:component-scan base-package="com.happyframework.exception.handling.springframework" />
     <context:component-scan base-package="com.happyframework.exception.handling" />
     
     <aop:aspectj-autoproxy/>
+
+ 	<bean class="com.happyframework.exception.handling.springframework.ExceptionHandlerDefination">
+		<property name="policy" value="UI"/>
+		<property name="handler">
+			<bean class="com.happyframework.exception.handling.ConsoleLoggingHandler"/>
+		</property>
+	</bean>
+ 	<bean class="com.happyframework.exception.handling.springframework.ExceptionHandlerDefination">
+		<property name="policy" value="UI"/>
+		<property name="handler">
+			<bean class="com.happyframework.exception.handling.ConsoleNotificationHandler"/>
+		</property>
+	</bean>
 </beans>
          
